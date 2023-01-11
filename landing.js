@@ -22,3 +22,51 @@ loginForm.onsubmit = function (event) {
     // Time to actually process the login using the function from auth.js!
     login(loginData);
 };
+
+// Registration Page Javascript 
+
+ // Add event listener to form
+ const form = document.getElementById("register-form");
+ form.addEventListener("submit", handleSubmit);
+
+ function handleSubmit(event) {
+   event.preventDefault();
+
+   // Get values of input fields
+   const email = document.getElementById("email").value;
+   const password = document.getElementById("psw").value;
+   const repeatPassword = document.getElementById("psw-repeat").value;
+
+   // Check if passwords match
+   if (password !== repeatPassword) {
+     alert("Passwords do not match. Please try again.");
+     return;
+   }
+
+   // Create body object for fetch request
+   const userData = {
+     email: email,
+     password: password
+   };
+
+   // Perform fetch request
+   fetch("https://microbloglite.herokuapp.com/api/users", {
+     method: "POST",
+     headers: { "Content-Type": "application/json" },
+     body: JSON.stringify(userData)
+   })
+     .then(response => {
+       if (response.status === 201) {
+         // registration was successful
+         alert("Registration Successful! You will now be redirected to the login page.");
+         return window.location.href = '/login';
+       } else {
+         // registration was not successful
+         throw new Error("Registration failed");
+       }
+     })
+     .catch(error => {
+       console.error(error);
+       alert("An error occurred during registration. Please try again later.");
+     });
+ }

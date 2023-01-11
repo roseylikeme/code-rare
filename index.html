@@ -25,25 +25,51 @@
 <body>
 
     <header>
-        <h1>Welcome to <code>YOUR MICROBLOG NETWORK</code></h1>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="index.html">CODE:RARE BLOGS</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Posts</a>
+                </li>
+            </div>
+          </nav>
     </header>
 
     <main>
-        <h1>Rose changes</h1>
+        <img src="images/Free_Sample_By_Wix.jpeg" class="logo">
+        <br>
+        <div class="SiteInfo">
+            Spread misinformation, learn new tax loopholes, and argue with people that you will never see in your life. CODE: RARE is the perfect place to waste hours in a dopamine loop.
+        </div>
+        <br>
         <form id="login">
             <div>
-                <label for="username">Username</label>
+                <label for="username">Username:</label>
                 <input type="text" id="username" minlength="3">
             </div>
 
             <div>
-                <label for="password">Password</label>
+                <label for="password">Password:</label>
                 <input type="password" id="password" minlength="6">
             </div>
 
             <button id="loginButton" type="submit">Login</button>
         </form>
+        <br>
+        <br>
 
+        <br>
+        <div class="registration">
+            <a href="registration.html">Not registered? Sign up here!</a>
+        </div>
+        
     </main>
 
     <footer></footer>
