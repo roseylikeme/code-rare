@@ -2,9 +2,10 @@
 
 "use strict";
 
-const loginForm = document.querySelector("#login");
+const loginForm = document.getElementById("login");
 
-loginForm.onsubmit = function (event) {
+window.addEventListener('load', function(){
+  loginForm.onsubmit = function (event) {
     // Prevent the form from refreshing the page,
     // as it will do by default when the Submit event is triggered:
     event.preventDefault();
@@ -16,13 +17,16 @@ loginForm.onsubmit = function (event) {
         password: loginForm.password.value,
     }
 
-    // Disables the button after the form has been submitted already:
-    loginForm.loginButton.disabled = true;
+  // Disables the button after the form has been submitted already:
+  loginForm.loginButton.disabled = true;
 
-    // Time to actually process the login using the function from auth.js!
-    login(loginData);
+  // Time to actually process the login using the function from auth.js!
+  login(loginData);
 };
 
+<<<<<<< HEAD:scripts/index.js
+})
+=======
 // Registration Page Javascript 
 
  // Add event listener to form
@@ -70,3 +74,4 @@ loginForm.onsubmit = function (event) {
        alert("An error occurred during registration. Please try again later.");
      });
  }
+>>>>>>> main:landing.js
