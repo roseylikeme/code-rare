@@ -1,1 +1,234 @@
 /* Posts Page CSS */
+
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@100;200;300;400;500;600;700;800&display=swap');
+
+
+.offcanvas {
+    --bs-offcanvas-width: 40vw;
+}
+
+#sidebarStuff {
+    --bs-gutter-x: 0rem;
+    text-align: center;
+    z-index: -1;
+}
+
+#toggleBtn {
+    margin: auto;
+    --bs-navbar-toggler-padding-y: .25rem;
+    --bs-navbar-toggler-padding-x: .50rem;
+    border-radius: 9999px;
+}
+
+#postBtn {
+    border-radius: 20px;
+    margin-right: 1%;
+    max-width: 15%;
+}
+
+nav {
+    height: 100vh;
+    width: 15vw;
+    overflow-x: hidden;
+}
+
+div.sidebar.col-3 {
+    padding-left: 0;
+}
+
+.postInput {
+    background-color: white;
+    box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}
+
+a {
+    text-decoration: none;
+}
+
+div.col-7 {
+    padding-left: 12px!important;
+    z-index: 1030;
+}
+
+#backToTopBtn {
+    display: none;
+}
+
+/* Card Styles */
+
+div.card.mb-3 {
+    padding: 0;
+    background-color: white;
+    box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}
+
+div.card-footer.bg-transparent {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    border-top: 0;
+}
+
+.postIcons {
+    transition: all .2s ease-in-out;
+}
+
+.postIcons:hover {
+    transform: scale(1.1);
+    color: #7693db;
+}
+
+.likeBtn {
+    transition: all .2s ease-in-out;
+}
+
+.likeBtn:hover {
+    transform: scale(1.1);
+    color: red;
+}
+
+.commentBtn {
+    transition: all .2s ease-in-out;
+}
+
+.commentBtn:hover {
+    transform: scale(1.1);
+    color: blue;
+}
+
+.shareBtn {
+    transition: all .2s ease-in-out;
+}
+
+.shareBtn:hover {
+    transform: scale(1.1);
+    color: goldenrod;
+}
+
+.saveBtn {
+    transition: all .2s ease-in-out;
+}
+
+.saveBtn:hover {
+    transform: scale(1.1);
+    color: green;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+/* End Of Card Styles */
+
+
+.jumbotron {
+    margin-bottom: 10px;
+}
+
+.footer {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+textarea {
+    min-width: 100%;
+}
+
+@media only screen and (max-width: 767px) {
+    nav {
+        height: 10vh;
+        margin-left: 15px;
+    }
+    .bg-dark {
+        background-color: #6793b5!important;
+    }
+    #toggleBtn {
+        background-color: #212529;
+    }
+    #backToTopBtn {
+        display: block;
+    }
+
+    .centerContainer {
+        flex: 0 0 auto;
+        width: 80%!important;
+        z-index: 2000;
+    }
+    
+    #pcContainer{
+        background-color: #212529!important;
+    }
+}
+
+@media only screen and (max-width: 1026px) {
+    .sidebar {
+        display: none;
+    }
+    .centerContainer {
+        flex: 0 0 auto;
+        width: 80%!important;
+        z-index: 1!important;
+    }
+}
+
+a {
+    color: white;
+}
+
+#rightContent {
+    margin-top: 10px;
+    padding: 1;
+    margin-left: auto;
+}
+
+.profileImg {
+    display: flex;
+    justify-content: center;
+}
+
+.showMore {
+    padding-bottom: 10px;
+}
+
+
+body {
+    font-family: 'Sofia Sans', sans-serif;
+    background-color: #6793b5;
+    --hover-color: #adc8dc;
+    --hover-background: #0d0f10;
+}
+
+#search-bar {
+    background: #FFFFFF;
+    box-shadow: inset 0px 5px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 35px;
+    margin-bottom: 2.5%;
+}
+
+.article {
+    text-align: center;
+}
+
+.nav-item:hover {
+    background-color: var(--hover-background);
+    border-radius: 9999px;
+    color: var(--hover-color);
+    transition: color 100ms ease-out;
+  }
+
+.nav-item {
+    margin-left: .7rem;
+}
+
+.centerContainer {
+    flex: 0 0 auto;
+    width: 58.33333333%;
+    z-index: 2000;
+}
