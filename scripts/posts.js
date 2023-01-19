@@ -12,6 +12,21 @@ signoutBtn.onclick = function () {
     logout();
 }
 
+// Add more posts when scrolling
+window.addEventListener('scroll', () => {
+    if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight) {
+        displayUserPost();
+    }
+});
+
+// Offset is 0, add to the offset
+let offset = 0;
+function addOffset() {
+    offset += 5;
+    return offset;
+}
+
+// Creates the cards
 function displayCard(data) {
     document.getElementById("divForPost").innerHTML += `
     <div class="row">
@@ -68,25 +83,7 @@ function displayCard(data) {
     `;
 }
 
-
-
-async function GetPosts() {
-
-    console.log(Date.now())
-    const response =  await fetch(`https://microbloglite.herokuapp.com/api/posts?limit=500&offset=0`, {
-        method: "GET", 
-        headers: {"Authorization": `Bearer ${loginData.token}`,
-                "Content-type":
-                "application/json; charset=UTF-8"}
-    })
-    const data = await response.json();
-    console.log(Date.now())
-  //  data.forEach(element => {
-    //    Object.entries(obj).forEach()
-        
-    ;
-}
-GetPosts();
+// Displays the posts + Grabs from the API
 function displayUserPost() { 
     let loginData = getLoginData()
 
@@ -94,7 +91,8 @@ function displayUserPost() {
     let postOutputList = document.getElementById("postOutputList")
     postOutputList.innerHTML = "";
 
-    fetch(`https://microbloglite.herokuapp.com/api/posts?limit=500&offset=0`, {
+    // Fetch 5 at a time + 5 per load
+    fetch(`https://microbloglite.herokuapp.com/api/posts?limit=5&offset=${addOffset()}`, {
         method: "GET", 
         headers: {"Authorization": `Bearer ${loginData.token}`,
                 "Content-type":
@@ -104,13 +102,18 @@ function displayUserPost() {
     .then(data =>   {
         // How to Sort Data? -- Newest First
         // ! Downside: Takes a while to load the webpage... so much data.
-        for (let i = data.length-1; i>=0; i--) {
-                displayCard(data[i]);
-            }
+        // for (let i = data.length-1; i>=0; i--) {
+        //         displayCard(data[i]);
+        //     }
+
+        // Oldest First
+        for (let i = 0; i < data.length; i++) {
+            displayCard(data[i]);
+        }
     })
 }
 
-// 
+// When the airplane BTN is clicked POST to server
 function postBtnOnClick() {
     let inputElement = document.getElementById('post');
     let textToPost = inputElement.value;
@@ -130,7 +133,7 @@ function postBtnOnClick() {
         console.log(data)
         if (response.ok) {
           inputElement.value = '';
-          setTimeout(function(){ location.reload(); }, 1000);
+        //   setTimeout(function(){ location.reload(); }, 1000);
         }
       });
   }
@@ -140,28 +143,6 @@ function loginData() {
     let loginData = getLoginData();
     return loginData
 }
-
-// Converts The Date 
-// function fullDate (date) {
-//     let givenDate = new Date(date);
-//     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-//     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-
-//     let day = givenDate.getDate();
-//     let month = months[givenDate.getMonth()];
-//     let year = givenDate.getFullYear();
-//     let dayOfWeek = days[givenDate.getDay()];
-//     let hours = givenDate.getHours();
-//     let minutes = givenDate.getMinutes();
-//     if (hours <= 12){
-//         let fullDate = `${dayOfWeek}, ${month} ${day}, ${year} at ${hours}:${minutes.toString(10).padStart(2, '0')} AM`
-//         return fullDate;
-//     }
-//     else {
-//         let fullDate = `${dayOfWeek}, ${month} ${day}, ${year} at ${hours - 12}:${minutes.toString(10).padStart(2, '0')} PM`
-//         return fullDate;
-//     }
-// }
 
 // Date Converter
 function monthDayYear(date) {

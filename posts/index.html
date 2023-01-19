@@ -16,6 +16,15 @@
     <!-- Page-specific CSS -->
     <link rel="stylesheet" href="../css/posts.css">
 
+    <!--IconScout CDN-->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+
+    <script src="https://kit.fontawesome.com/ee24932273.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+
+
     <title>/POSTS</title>
 
     <!-- Run BEFORE page is finished loading (before window.onload): -->
@@ -26,27 +35,265 @@
 </head>
 
 <body>
+    <main>
+        <div class="container-fluid">
+            <div class="row">
+                <!--=========================== Navbar: Left Side Content = =================================-->
+                <div class="col-2">
+                    <div class="row fixed-top">
+                        <div class="col" id="sidebarStuff">
+                            <nav class="navbar navbar-expand-md navbar-dark bg-dark d-flex flex-column">
+                                <div class="container-fluid">
+                                    <button id="toggleBtn" class="navbar-toggler" type="button"
+                                        data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
+                                        aria-controls="offcanvasDarkNavbar">
+                                        <span class="navbar-toggler-icon"></span>
+                                    </button>
+                                    <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1"
+                                        id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+                                        <div class="offcanvas-body">
+                                            <ul
+                                                class="navbar-nav nav nav-pills flex-column justify-content-end flex-grow-1 pe-3">
 
-    <header>
-        <h1>POSTS PAGE</h1>
-        <h1>Create a post</h1>
+                                                <!-- LOGO -->
+                                                <li class="text-center">
+                                                    <img src="../images/Free_Sample_By_Wix.jpeg" width="100"
+                                                        height="100" class="rounded-circle">
+                                                </li>
+                                                <hr>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" aria-current="page" href="#">
+                                                        <i class="bi-house-fill fs-1 text-white"></i>
+                                                        <p>Home</p>
+                                                    </a>
+                                                </li>
 
-        <input text="" id="myPost"> Test
-        <textarea>
+                                                <li class="nav-item">
+                                                    <a href="profile.html" id="profileBtn" class="btn py-3 nav-link"
+                                                        title="Profile" data-bs-toggle="tooltip"
+                                                        data-bs-placement="right" data-bs-original-title="Products">
+                                                        <i class="bi bi-person-fill fs-1 text-white"></i>
+                                                        <p>Profile</p>
+                                                    </a>
+                                                </li>
 
-        </textarea>
-        <button onclick="SendPost()">Create a Post</button>
-    </header>
+                                                <li class="nav-item">
+                                                    <a href="#" id="signoutBtn" class="btn py-3 nav-link" title="Sign out"
+                                                        data-bs-toggle="tooltip" data-bs-placement="right"
+                                                        data-bs-original-title="Customers">
+                                                        <i class="bi bi-person-x-fill fs-1 text-white"></i>
+                                                        <p>Logout</p>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
 
-    <main></main>
+                <!--------------================================ -Center Content- =================================----------->
+                <div class="centerContainer px-4">
+                    <div class="container p-0">
+                        <div class="postInput mt-3 mb-3">
 
-    <footer></footer>
+                            <textarea class="text rounded mt-3" id="post" rows="3" placeholder="Whatcha coding?"
+                                style="border: none;"></textarea>
+                            <br>
 
+                            <div class="card-footer bg-transparent">
+                                <div class="btn-group" role="group" aria-label="Basic mixed styles example"
+                                    style="width: 100%;">
+                                    <!-- ======================== LEFT ICON BUTTONS ====================== -->
+                                    <div class="leftBtns">
+                                        <button type="button" class="btn postIcons" style="width: 7%;">
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                    fill="currentColor" class="bi bi-image" viewBox="0 0 16 16">
+                                                    <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                                    <path
+                                                        d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z" />
+                                                </svg>
+                                            </span>
+                                            <!-- Image Icon -->
+                                        </button>
 
+                                        <button type="button" class="btn postIcons" style="width: 7%;">
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                    fill="currentColor" class="bi bi-paperclip" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0V3z" />
+                                                </svg>
+                                            </span>
+                                            <!-- Paper Clip -->
+                                        </button>
+    
+                                        <button type="button" class="btn postIcons" style="width: 7%;">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-range-fill" viewBox="0 0 16 16">
+                                                <path d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM16 7V5H0v5h5a1 1 0 1 1 0 2H0v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9h-6a1 1 0 1 1 0-2h6z"/>
+                                              </svg>
+                                            <!-- Calendar -->
+                                        </button>
+    
+                                        <button type="button" class="btn postIcons" style="width: 7%;">
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                    fill="currentColor" class="bi bi-emoji-smile" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                                    <path
+                                                        d="M4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z" />
+                                                </svg>
+                                            </span>
+                                            <!-- Emoji -->
+                                        </button>
+
+                                        <button type="button" class="btn postIcons" style="width: 7%;">
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                                                    <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+                                                    <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                                  </svg>
+                                            </span>
+                                            <!-- Location -->
+                                        </button>
+                                    </div>
+                                    <!-- ======================== RIGHT ICON BUTTON ====================== -->
+                                    <div class="rightBtns">
+                                        <button type="button" class="btn postIcons" id="postBtn">
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
+                                                    <path 
+                                                        d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
+                                                  </svg>
+                                            </span>
+                                        </button>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                        <!--================= POST CARD CONTAINER ========================-->
+                        <div class="card bg-dark rounded-5 mb-3">
+                            <div id="pcContainer" class="rounded-5 text-white d-flex bg-dark">
+                                <!-- Post Output -->
+                                <div id="postOutputList" class="feeds" style="margin-top: 100px;">
+                                </div>
+                                <!-- Bio cardBody -->
+                                <div class="card-body  p-4 text-white">
+                                    <div class="postUP">
+                                        <h3 class="fw-bolder text-white text-center mt-2">POSTS</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                            
+                    </div>
+
+                    <div class="container" id="divForPost">
+                        
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <aside class="sidebar col-3 fixed-top" id="rightContent">
+
+                    <div>
+                        <form class="offset-1 mx-auto d-flex" role="search">
+                            <input class="form-control me-2" id="search-bar" type="search" placeholder="Search Code: Rare"
+                                aria-label="Search">
+                        </form>
+                    </div>
+
+                    <div class="jumbotron jumbotron-fluid text-bg-dark rounded-3 ">
+                        <div class="container">
+                            <h4 class="trending text-center  p-3">Absolutely Bonkers</h4>
+
+                            <p id="displayNews"></p>
+                            <img id="img" src="" alt="">
+
+                        </div>
+                    </div>
+
+                    <div class="jumbotron jumbotron-fluid  text-bg-dark rounded-3">
+                        <div class="container">
+                            <h4 class="people text-center mb-3 pt-3">Meet the Founders</h4>
+                            <hr>
+                            <div class="row">
+                                <div class="col profileImg">
+                                    <img class="img rounded-circle" src="../images/rose.jpeg"
+                                        height="100" width="100" alt="user">
+                                </div>
+                            </div>
+
+                            <br>
+
+                            <div class="row">
+                                <div class="col profileImg">
+                                    <img class="img rounded-circle"
+                                        src="../images/rose.jpeg" height="100"
+                                        width="100" alt="user">
+                                </div>
+                            </div>
+
+                            <br>
+
+                            <div class="row">
+                                <div class="col profileImg">
+                                    <img class="img rounded-circle"
+                                        src="../images/rose.jpeg" height="100" width="100"
+                                        alt="user">
+                                </div>
+                            </div>
+
+                            <br>
+                        </div>
+                    </div>
+
+                    <!-- Links Etc. (About Us, Contact, Github) -->
+
+                    <div class="jumbotron jumbotron-fluid text-bg-dark rounded-3 ">
+                        <div class="container">
+                            <h4 class="trending text-center  p-3">More Stuff</h4>
+
+                            <div id="footer">
+                                <div class="container">
+                                    <footer class="footer">
+                                        <hr>
+                                        <ul class="nav justify-content-center border-bottom pb-3 mb-3 ">
+                                            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Terms</a>
+                                            </li>
+
+                                            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Privacy
+                                                    Policy</a></li>
+
+                                            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a>
+                                            </li>
+
+                                            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a>
+                                            </li>
+
+                                            <li class="nav-item"><a href="#"
+                                                    class="nav-link px-2 text-muted">Contact</a></li>
+                                        </ul>
+                                        <p class="text-center text-muted">© 2023 RARE Inc.</p>
+                                    </footer>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </aside>
+    </main>
     <!-- Bootstrap Bundle (including Popper for popovers) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
-    </script>
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
 
     <!-- Page-specific code -->
     <script src="../scripts/posts.js"></script>
