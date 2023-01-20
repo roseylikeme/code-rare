@@ -30,7 +30,7 @@
     <!-- Run BEFORE page is finished loading (before window.onload): -->
     <script src="../scripts/auth.js"></script>
     <script>
-        if (isLoggedIn() === false) window.location.replace("/");
+        // if (isLoggedIn() === false) window.location.replace("/");
     </script>
 </head>
 
@@ -62,14 +62,14 @@
                                                 </li>
                                                 <hr>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" aria-current="page" href="../posts/">
+                                                    <a class="nav-link" aria-current="page" href="#">
                                                         <i class="bi-house-fill fs-1 text-white"></i>
                                                         <p>Home</p>
                                                     </a>
                                                 </li>
 
                                                 <li class="nav-item">
-                                                    <a href="../profile/" id="profileBtn" class="btn py-3 nav-link"
+                                                    <a href="profile.html" id="profileBtn" class="btn py-3 nav-link"
                                                         title="Profile" data-bs-toggle="tooltip"
                                                         data-bs-placement="right" data-bs-original-title="Products">
                                                         <i class="bi bi-person-fill fs-1 text-white"></i>
@@ -95,30 +95,19 @@
                 </div>
 
                 <!--------------================================ -Center Content- =================================----------->
-                <div class="centerContainer px-4 mt-3">
+                <div class="centerContainer px-4">
                     <div class="container p-0">
-                        
-                        
-
                         <!--================= POST CARD CONTAINER ========================-->
-                        <div class="card bg-dark rounded-5 mb-3">
+                        <div class="card bg-dark rounded-5 mb-3 mt-3">
                             <div id="pcContainer" class="rounded-5 text-white d-flex bg-dark">
-                                <!-- Bio cardBody -->
-                                <div class="card-body p-4 text-white">
-                                    <h3 class="fw-bolder text-white text-center mt-2">USER PROFILE</h3>
+                                <!-- Post Output -->
+                                <div id="postOutputList" class="feeds" style="margin-top: 100px;">
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class="card bg-dark rounded-5 mb-3">
-                            <div id="pcContainer" class="rounded-5 text-white d-flex bg-dark">
-                                
                                 <!-- Bio cardBody -->
                                 <div class="card-body  p-4 text-white">
-                                    <h1 id="name" ><img src="" id="user-image">Username</h1>
-                                    <p id="bio" class="bio mt-2">Hello I am <span id="nameBio" style="text-transform: capitalize;"></span>.<br>Software Engineer<br>
-                                        <span id="createdAt"></span>
-                                    </p>
+                                    <div class="postUP">
+                                        <h3 class="fw-bolder text-white text-center mt-2">POSTS</h3>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -203,11 +192,12 @@
                             </div>
                             
                         </div>
+
+                       
                                             
                     </div>
 
-                    
-                    <div class="container" id="recentPost">
+                    <div class="container" id="divForPost">
                         
                     </div>
                 </div>
@@ -316,7 +306,7 @@
         crossorigin="anonymous"></script>
 
     <!-- Page-specific code -->
-    <script src="profile.js"></script>
+    <script src="../scripts/posts.js"></script>
 </body>
 
 </html>
