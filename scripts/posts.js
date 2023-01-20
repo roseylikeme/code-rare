@@ -2,15 +2,15 @@
 
 "use strict";
 
-window.onload = function () {
+window.addEventListener("load", function(){
     displayUserPost();
     document.getElementById("postBtn").onclick = postBtnOnClick;
-}
-const signoutBtn = document.getElementById("signoutBtn")
+    const signoutBtn = document.getElementById("signoutBtn")
 
-signoutBtn.onclick = function () {
-    logout();
-}
+    signoutBtn.onclick = function () {
+        logout();
+    }
+})
 
 // Add more posts when scrolling
 window.addEventListener('scroll', () => {
@@ -107,6 +107,7 @@ function displayUserPost() {
         //     }
 
         // Oldest First
+        // ! Unfortunately have to go with this method for faster response
         for (let i = 0; i < data.length; i++) {
             displayCard(data[i]);
         }
