@@ -1,24 +1,42 @@
 "use strict"
 
+// init vars here
 const loginData = getLoginData();
 const currentUser = (loginData).username
+const userFullName = document.getElementById("fullName")
+const userCreationDate = document.getElementById("createdAt")
+const signoutBtn = document.getElementById("signoutBtn")
+const userBio = document.getElementById("bio")
 
 window.addEventListener("load", function(){
     console.log("event has been listened")
     displayPost()
-
-    document.getElementById("postBtn").onclick = postBtnOnClick;
-    const signoutBtn = document.getElementById("signoutBtn")
-
-    // todo add a created at date
-    document.getElementById("name").innerText = '@'+ currentUser
-    document.getElementById("nameBio").innerHTML = currentUser
-    
-    
+    moreInfo()
     signoutBtn.onclick = function () {
         logout();
     }
+
+    document.getElementById("postBtn").onclick = postBtnOnClick;
+    document.getElementById("name").innerText = '@'+ currentUser
+    
 })
+
+// Grab Full Name
+function moreInfo(){
+    fetch(`https://microbloglite.herokuapp.com/api/users/${loginData.username}`, {
+        method: "GET",
+        headers: {"Authorization": `Bearer ${loginData.token}`,
+                "Content-type":
+                "application/json; charset=UTF-8"}
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
+        userFullName.innerHTML = data.fullName;
+        userCreationDate.innerHTML = monthDayYear(data.createdAt);
+        userBio.innerHTML = data.bio;
+    })
+}
 
 // Display Posts
 function displayPost() {
@@ -99,27 +117,27 @@ function displayPost() {
   }
 
 function postBtnOnClick() {
-let inputElement = document.getElementById('post');
-let textToPost = inputElement.value;
-let data = { text: textToPost };
+    let inputElement = document.getElementById('post');
+    let textToPost = inputElement.value;
+    let data = { text: textToPost };
 
-let options = {
-    method: 'POST',
-    body: JSON.stringify(data),
-    headers: {
-    "Content-Type": 'application/json',
-    "Authorization": `Bearer ${(loginData).token}`
-    },
-};
+    let options = {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+        "Content-Type": 'application/json',
+        "Authorization": `Bearer ${(loginData).token}`
+        },
+    };
 
-fetch("https://microbloglite.herokuapp.com/api/posts", options)
-    .then(response => {
-    console.log(data)
-    if (response.ok) {
-        inputElement.value = '';
-        setTimeout(function(){ location.reload(); }, 1000); // Refreshes the page.
-    }
-    });
+    fetch("https://microbloglite.herokuapp.com/api/posts", options)
+        .then(response => {
+        console.log(data)
+        if (response.ok) {
+            inputElement.value = '';
+            setTimeout(function(){ location.reload(); }, 1000); // Refreshes the page.
+        }
+        });
 }
 
 function monthDayYear(date) {
