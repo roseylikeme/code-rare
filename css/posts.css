@@ -20,12 +20,6 @@
     border-radius: 9999px;
 }
 
-#postBtn {
-    border-radius: 20px;
-    margin-right: 1%;
-    max-width: 15%;
-}
-
 nav {
     height: 100vh;
     width: 15vw;
@@ -74,6 +68,7 @@ div.card-footer.bg-transparent {
 .postIcons {
     transition: all .2s ease-in-out;
 }
+
 
 .postIcons:hover {
     transform: scale(1.1);
@@ -231,4 +226,15 @@ body {
     flex: 0 0 auto;
     width: 58.33333333%;
     z-index: 2000;
+}
+
+#editProfileModal {
+    z-index: 9999;
+}
+
+.modal-content.modalStuff {
+    margin-top: 50%;
+    border-radius: 3rem;
+    background-color: #3c4854;
+    color: white;
 }

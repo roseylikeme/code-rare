@@ -7,6 +7,9 @@ const userFullName = document.getElementById("fullName")
 const userCreationDate = document.getElementById("createdAt")
 const signoutBtn = document.getElementById("signoutBtn")
 const userBio = document.getElementById("bio")
+const updateNameField = document.getElementById("editUserFullName")
+const editDescription = document.getElementById("editUserBio")
+const bioSaveBtn = document.getElementById("bioSaveBtn")
 
 window.addEventListener("load", function(){
     console.log("event has been listened")
@@ -20,6 +23,8 @@ window.addEventListener("load", function(){
     document.getElementById("name").innerText = '@'+ currentUser
     
 })
+
+//TODO: Update Bio Fields.
 
 // Grab Full Name
 function moreInfo(){
@@ -37,6 +42,7 @@ function moreInfo(){
         userBio.innerHTML = data.bio;
     })
 }
+
 
 // Display Posts
 function displayPost() {
@@ -117,7 +123,6 @@ function displayPost() {
   }
 
 function postBtnOnClick() {
-    let inputElement = document.getElementById('post');
     let textToPost = inputElement.value;
     let data = { text: textToPost };
 

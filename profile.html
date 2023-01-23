@@ -57,8 +57,8 @@
 
                                                 <!-- LOGO -->
                                                 <li class="text-center">
-                                                    <img src="images/Free_Sample_By_Wix.jpeg" width="100"
-                                                        height="100" class="rounded-circle">
+                                                    <img src="images/Free_Sample_By_Wix.jpeg" width="100" height="100"
+                                                        class="rounded-circle">
                                                 </li>
                                                 <hr>
                                                 <li class="nav-item">
@@ -78,16 +78,16 @@
                                                 </li>
 
                                                 <li class="nav-item">
-                                                    <a href="#" id="signoutBtn" class="btn py-3 nav-link" title="Sign out"
-                                                        data-bs-toggle="tooltip" data-bs-placement="right"
-                                                        data-bs-original-title="Customers">
+                                                    <a href="#" id="signoutBtn" class="btn py-3 nav-link"
+                                                        title="Sign out" data-bs-toggle="tooltip"
+                                                        data-bs-placement="right" data-bs-original-title="Customers">
                                                         <i class="bi bi-person-x-fill fs-1 text-white"></i>
                                                         <p>Logout</p>
                                                     </a>
                                                 </li>
                                             </ul>
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                             </nav>
@@ -98,8 +98,8 @@
                 <!--------------================================ -Center Content- =================================----------->
                 <div class="centerContainer px-4 mt-3">
                     <div class="container p-0">
-                        
-                        
+
+
 
                         <!--================= POST CARD CONTAINER ========================-->
                         <div class="card bg-dark rounded-5 mb-3">
@@ -113,25 +113,29 @@
 
                         <div class="card bg-dark rounded-5 mb-3">
                             <div id="pcContainer" class="rounded-5 text-white d-flex bg-dark">
-                                
+
                                 <!-- Bio cardBody -->
                                 <div class="card-body  p-4 text-white">
                                     <div class="container-ends d-flex justify-content-between">
                                         <div class="left">
-                                            <h1 id="name" ><img src="" id="user-image">Username</h1>
+                                            <h1 id="name"><img src="" id="user-image">Username</h1>
                                         </div>
                                         <div class="right">
-                                            <button class="btn btn-outline-light rounded-5 fw-bold">Edit Profile</button>
+                                            <button class="btn btn-outline-light rounded-5 fw-bold"
+                                                data-bs-toggle="modal" data-bs-target="#editProfileModal">
+                                                Edit Profile
+                                            </button>
                                         </div>
                                     </div>
                                     <p class="bio mt-2">
-                                        Hello it's <span id="fullName" class="fw-bolder fst-italic" style="text-transform: capitalize;"></span>.
-                                        <div class="mb-3">
-                                            <span id="bio">Software Engineer</span>
-                                        </div>
-                                        <div>
-                                            <span>Joined: </span><span id="createdAt">Sometime somewhere</span>
-                                        </div>
+                                        Hello it's <span id="fullName" class="fw-bolder fst-italic"
+                                            style="text-transform: capitalize;"></span>.
+                                    <div class="mb-3">
+                                        <span id="bio">Software Engineer</span>
+                                    </div>
+                                    <div>
+                                        <span>Joined: </span><span id="createdAt">Sometime somewhere</span>
+                                    </div>
                                     </p>
                                 </div>
                             </div>
@@ -148,7 +152,7 @@
                                     style="width: 100%;">
                                     <!-- ======================== LEFT ICON BUTTONS ====================== -->
                                     <div class="leftBtns">
-                                        <button type="button" class="btn postIcons" style="width: 7%;">
+                                        <button type="button" class="btn postIcons">
                                             <span>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                     fill="currentColor" class="bi bi-image" viewBox="0 0 16 16">
@@ -160,7 +164,7 @@
                                             <!-- Image Icon -->
                                         </button>
 
-                                        <button type="button" class="btn postIcons" style="width: 7%;">
+                                        <button type="button" class="btn postIcons">
                                             <span>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                     fill="currentColor" class="bi bi-paperclip" viewBox="0 0 16 16">
@@ -170,15 +174,18 @@
                                             </span>
                                             <!-- Paper Clip -->
                                         </button>
-    
-                                        <button type="button" class="btn postIcons" style="width: 7%;">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-range-fill" viewBox="0 0 16 16">
-                                                <path d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM16 7V5H0v5h5a1 1 0 1 1 0 2H0v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9h-6a1 1 0 1 1 0-2h6z"/>
-                                              </svg>
+
+                                        <button type="button" class="btn postIcons">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-calendar-range-fill"
+                                                viewBox="0 0 16 16">
+                                                <path
+                                                    d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM16 7V5H0v5h5a1 1 0 1 1 0 2H0v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9h-6a1 1 0 1 1 0-2h6z" />
+                                            </svg>
                                             <!-- Calendar -->
                                         </button>
-    
-                                        <button type="button" class="btn postIcons" style="width: 7%;">
+
+                                        <button type="button" class="btn postIcons">
                                             <span>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                     fill="currentColor" class="bi bi-emoji-smile" viewBox="0 0 16 16">
@@ -191,12 +198,15 @@
                                             <!-- Emoji -->
                                         </button>
 
-                                        <button type="button" class="btn postIcons" style="width: 7%;">
+                                        <button type="button" class="btn postIcons">
                                             <span>
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
-                                                    <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
-                                                    <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                                                  </svg>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                    fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
+                                                    <path
+                                                        d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                                                </svg>
                                             </span>
                                             <!-- Location -->
                                         </button>
@@ -205,24 +215,25 @@
                                     <div class="rightBtns">
                                         <button type="button" class="btn postIcons" id="postBtn">
                                             <span>
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
-                                                    <path 
-                                                        d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
-                                                  </svg>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                    fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z" />
+                                                </svg>
                                             </span>
                                         </button>
                                     </div>
-                                    
+
                                 </div>
                             </div>
-                            
+
                         </div>
-                                            
+
                     </div>
 
-                    
+
                     <div class="container" id="recentPost">
-                        
+
                     </div>
                 </div>
 
@@ -231,8 +242,8 @@
 
                     <div>
                         <form class="offset-1 mx-auto d-flex" role="search">
-                            <input class="form-control me-2" id="search-bar" type="search" placeholder="Search Code: Rare"
-                                aria-label="Search">
+                            <input class="form-control me-2" id="search-bar" type="search"
+                                placeholder="Search Code: Rare" aria-label="Search">
                         </form>
                     </div>
 
@@ -241,8 +252,6 @@
                             <h4 class="trending text-center  p-3">Absolutely Bonkers</h4>
 
                             <p id="displayQuote"></p>
-                            <img id="img" src="" alt="">
-
                         </div>
                     </div>
 
@@ -264,7 +273,7 @@
                                 <div class="row">
                                     <div class="col profileImg">
                                         <img class="img rounded-circle"
-                                            src="images/rose.jpeg" height="100"
+                                            src="https://media.licdn.com/dms/image/C4E03AQFw15uqP0B51w/profile-displayphoto-shrink_200_200/0/1663922531958?e=1679529600&v=beta&t=HIROf2vfb2dL40Hw_ktAFpbdYX2cubyUjVGIFPH1aXE" height="100"
                                             width="100" alt="Ryan Roblez">
                                     </div>
                                 </div>
@@ -276,7 +285,7 @@
                                 <div class="row">
                                     <div class="col profileImg">
                                         <img class="img rounded-circle"
-                                            src="images/rose.jpeg" height="100" width="100"
+                                            src="https://media.licdn.com/dms/image/C5603AQG78epPvy2Dww/profile-displayphoto-shrink_200_200/0/1622007397419?e=1679529600&v=beta&t=ZPI9UuBm5rO43W7IGspsZn0Qah49-1O0S-PvIqR2S50" height="100" width="100"
                                             alt="Ashley Ung">
                                     </div>
                                 </div>
@@ -323,6 +332,35 @@
                         </div>
                     </div>
                 </aside>
+
+                <!-- Modal -->
+                <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel"
+                    aria-hidden="true">
+                    <form>
+                        <div class="modal-dialog">
+                            <div class="modal-content modalStuff">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="editProfileModalLabel">EDIT PROFILE </h1>
+                                    <i id="sun-header" class="fs-4 bi bi-pencil-square ms-2"></i>
+                                    <button type="button" class="btn-close me-2" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <input id="editUserFullName" class="form-control form-control-lg bg-dark text-white" type="text"
+                                        placeholder="Name">
+
+                                    <textarea class="rounded mt-3 form-control form-control-lg bg-dark text-white" id="editUserBio" rows="3" placeholder="Bio"
+                                style="border: none;"></textarea>
+                                </div>
+                                <div class="modal-footer me-2">
+                                    <button type="button" class="btn btn-secondary rounded-5"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button id="bioSaveBtn" type="submit" class="btn btn-light rounded-5 fw-bold">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
     </main>
     <!-- Bootstrap Bundle (including Popper for popovers) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
