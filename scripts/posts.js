@@ -19,13 +19,6 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Offset is 0, add to the offset
-let offset = 0;
-function addOffset() {
-    offset += 5;
-    return offset;
-}
-
 // Creates the cards
 function displayCard(data) {
     document.getElementById("divForPost").innerHTML += `
@@ -92,7 +85,7 @@ function displayUserPost() {
     postOutputList.innerHTML = "";
 
     // Fetch 5 at a time + 5 per load
-    fetch(`https://microbloglite.herokuapp.com/api/posts?limit=5&offset=${addOffset()}`, {
+    fetch(`https://microbloglite.herokuapp.com/api/posts?limit=5&offset=0}`, {
         method: "GET", 
         headers: {"Authorization": `Bearer ${loginData.token}`,
                 "Content-type":
@@ -101,16 +94,9 @@ function displayUserPost() {
     .then(response => response.json())
     .then(data =>   {
         // How to Sort Data? -- Newest First
-        // ! Downside: Takes a while to load the webpage... so much data.
-        // for (let i = data.length-1; i>=0; i--) {
-        //         displayCard(data[i]);
-        //     }
-
-        // Oldest First
-        // ! Unfortunately have to go with this method for faster response
-        for (let i = 0; i < data.length; i++) {
-            displayCard(data[i]);
-        }
+        for (let i = data.length-1; i>=0; i--) {
+                displayCard(data[i]);
+            }
     })
 }
 
