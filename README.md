@@ -16,3 +16,9 @@ Once a user is signed in, they will be sent to the posts page. Here, you could s
 Once a user enters their profile page, they will be able to create their own posts, as well as view the posts that you have created.
 
 ![image](https://user-images.githubusercontent.com/116207589/213821821-f8aa3e9d-0955-4570-bdf0-6f0c5e04fbb5.png)
+
+## TODOs
+
+Currently, there is a bug that will load a post multiple times on scroll. 
+- Fix duplicate posts
+- Implement liking feature
