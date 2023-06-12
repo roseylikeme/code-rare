@@ -111,7 +111,7 @@ function postBtnOnClick() {
       body: JSON.stringify(data),
       headers: {
         "Content-Type": 'application/json',
-        "Authorization": `Bearer ${(loginData()).token}`
+        "Authorization": `Bearer ${loginData.token}`
       },
     };
   
@@ -124,12 +124,6 @@ function postBtnOnClick() {
         }
       });
   }
-
-// Gets Login Data
-function loginData() {
-    let loginData = getLoginData();
-    return loginData
-}
 
 // Date Converter
 function monthDayYear(date) {
