@@ -46,29 +46,9 @@ function displayCard(data) {
                         ${data.likes.length}
                     </span>
                 </button>
-                <button type="button" class="btn commentBtn" style="width: 33.3%;">
-                    <span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                            fill="currentColor" class="bi bi-chat" viewBox="0 0 16 16">
-                            <path
-                                d="M2.678 11.894a1 1 0 0 1 .287.801 10.97 10.97 0 0 1-.398 2c1.395-.323 2.247-.697 2.634-.893a1 1 0 0 1 .71-.074A8.06 8.06 0 0 0 8 14c3.996 0 7-2.807 7-6 0-3.192-3.004-6-7-6S1 4.808 1 8c0 1.468.617 2.83 1.678 3.894zm-.493 3.905a21.682 21.682 0 0 1-.713.129c-.2.032-.352-.176-.273-.362a9.68 9.68 0 0 0 .244-.637l.003-.01c.248-.72.45-1.548.524-2.319C.743 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.52.263-1.639.742-3.468 1.105z" />
-                        </svg>
-                    </span>
-                </button>
-                <button type="button" class="btn shareBtn" style="width: 33.3%;">
-                    <span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                            fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
-                            <path
-                                d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z" />
-                        </svg>
-                    </span>
-                </button>
                 <button type="button" class="btn saveBtn" style="width: 33.3%;">
                     <span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-save2" viewBox="0 0 16 16">
-                            <path d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v4.5h2a.5.5 0 0 1 .354.854l-2.5 2.5a.5.5 0 0 1-.708 0l-2.5-2.5A.5.5 0 0 1 5.5 6.5h2V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z"/>
-                        </svg>
+                        <img src="../images/deleteBtn.svg" alt="Delete Button" width="16" height="16">
                     </span>
                 </button>
             </div>
@@ -78,6 +58,105 @@ function displayCard(data) {
     `;
 }
 
+// function displayCard(data) {
+//     const divForPost = document.getElementById("divForPost");
+  
+//     const cardRow = document.createElement("div");
+//     cardRow.classList.add("row");
+  
+//     const card = document.createElement("div");
+//     card.classList.add("card", "mb-3");
+//     card.style.maxWidth = "auto";
+  
+//     const cardBody = document.createElement("div");
+//     cardBody.classList.add("card-body");
+  
+//     const cardTitle = document.createElement("h4");
+//     cardTitle.classList.add("card-title");
+  
+//     const usernameSpan = document.createElement("span");
+//     const usernameSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+//     usernameSvg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+//     usernameSvg.setAttribute("width", "60");
+//     usernameSvg.setAttribute("height", "60");
+//     usernameSvg.setAttribute("fill", "currentColor");
+//     usernameSvg.classList.add("bi", "bi-person-circle");
+//     usernameSvg.setAttribute("viewBox", "0 0 16 16");
+  
+//     const path1 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+//     path1.setAttribute("d", "M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z");
+  
+//     const path2 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+//     path2.setAttribute("fill-rule", "evenodd");
+//     path2.setAttribute(
+//     "d",
+//     "M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
+//     );
+  
+//     const usernameTextNode = document.createTextNode(` @${data.username}`);
+//     const usernameTimeSpan = document.createElement("span");
+//     usernameTimeSpan.style.color = "#999999";
+//     usernameTimeSpan.style.fontSize = "x-small";
+//     const postedOnTextNode = document.createTextNode(` Posted On: ${monthDayYear(data.createdAt)}`);
+  
+//     const cardText = document.createElement("p");
+//     cardText.classList.add("card-text");
+//     cardText.textContent = data.text;
+  
+//     const cardFooter = document.createElement("div");
+//     cardFooter.classList.add("card-footer", "bg-transparent");
+  
+//     const btnGroup = document.createElement("div");
+//     btnGroup.classList.add("btn-group");
+//     btnGroup.setAttribute("role", "group");
+//     btnGroup.setAttribute("aria-label", "Basic mixed styles example");
+//     btnGroup.style.width = "100%";
+  
+//     const likeBtn = createButton("likeBtn", "bi bi-hand-thumbs-up", data.likes.length);
+//     const commentBtn = createButton("commentBtn", "bi bi-chat");
+//     const shareBtn = createButton("shareBtn", "bi bi-share");
+//     const saveBtn = createButton("saveBtn", "bi bi-save2");
+  
+//     btnGroup.appendChild(likeBtn);
+//     btnGroup.appendChild(commentBtn);
+//     btnGroup.appendChild(shareBtn);
+//     btnGroup.appendChild(saveBtn);
+  
+//     cardFooter.appendChild(btnGroup);
+//     cardBody.appendChild(cardTitle);
+//     cardBody.appendChild(cardText);
+//     cardBody.appendChild(cardFooter);
+//     card.appendChild(cardBody);
+//     cardRow.appendChild(card);
+//     divForPost.appendChild(cardRow);
+//   }
+  
+//   function createButton(className, iconClass, count = "") {
+//     const button = document.createElement("button");
+//     button.classList.add("btn", className);
+//     button.style.width = "33.3%";
+  
+//     const span = document.createElement("span");
+  
+//     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+//     svg.setAttribute("xmlns", "http://www.w3.org/2000/svg")
+//     svg.setAttribute("width", "16");
+//     svg.setAttribute("height", "16");
+//     svg.setAttribute("fill", "currentColor");
+
+
+  
+//     const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+//     // Set attributes for path
+  
+//     const countText = document.createTextNode(count);
+  
+//     span.appendChild(svg);
+//     span.appendChild(countText);
+//     button.appendChild(span);
+//     return button;
+// }
+  
 // Displays the posts + Grabs from the API
 function displayUserPost() { 
     let loginData = getLoginData()
