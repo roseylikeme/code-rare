@@ -119,7 +119,7 @@ function displayPost() {
                               ${post.likes.length}
                           </span>
                       </button>
-                      <button type="button" class="btn saveBtn" style="width: 33.3%;">
+                      <button type="button" class="btn deleteBtn" style="width: 33.3%;">
                     <span>
                         <img src="../images/deleteBtn.svg" alt="Delete Button" width="16" height="16">
                     </span>

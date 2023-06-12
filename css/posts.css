@@ -102,11 +102,11 @@ div.card-footer.bg-transparent {
     color: goldenrod;
 }
 
-.saveBtn {
+.deleteBtn {
     transition: all .2s ease-in-out;
 }
 
-.saveBtn:hover {
+.deleteBtn:hover {
     transform: scale(1.1);
     color: green;
 }
