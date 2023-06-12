@@ -2,6 +2,8 @@
 
 "use strict";
 
+const API_BASE_URL = "https://microbloglite.herokuapp.com";
+
 window.addEventListener("load", function(){
     displayUserPost();
     document.getElementById("postBtn").onclick = postBtnOnClick;
@@ -85,7 +87,7 @@ function displayUserPost() {
     postOutputList.innerHTML = "";
 
     // Fetch 5 at a time + 5 per load
-    fetch(`https://microbloglite.herokuapp.com/api/posts?limit=5&offset=0}`, {
+    fetch(API_BASE_URL + `/api/posts?limit=5&offset=0}`, {
         method: "GET", 
         headers: {"Authorization": `Bearer ${loginData.token}`,
                 "Content-type":
@@ -115,15 +117,15 @@ function postBtnOnClick() {
       },
     };
   
-    fetch("https://microbloglite.herokuapp.com/api/posts", options)
+    fetch(API_BASE_URL + "/api/posts", options)
       .then(response => {
         console.log(data)
         if (response.ok) {
           inputElement.value = '';
-        //   setTimeout(function(){ location.reload(); }, 1000);
+          setTimeout(function(){ location.reload(); }, 1000);
         }
-      });
-  }
+    });
+}
 
 // Date Converter
 function monthDayYear(date) {
