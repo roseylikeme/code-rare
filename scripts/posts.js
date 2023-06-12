@@ -57,7 +57,7 @@ function displayCard(data) {
                 </button>
                 <button type="button" class="btn deleteBtn" style="width: 33.3%;">
                     <span>
-                        <img src="../images/deleteBtn.svg" alt="Delete Button" width="16" height="16">
+                        <img src="images/deleteBtn.svg" alt="Delete Button" width="16" height="16">
                     </span>
                 </button>
             </div>
