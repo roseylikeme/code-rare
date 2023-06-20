@@ -104,7 +104,7 @@ function displayCard(data) {
   document.getElementById("divForPost").appendChild(cardContainer);
 }
 
-function createLikeButton(likes, postId, btnGroup) {
+function createLikeButton(likes, postId) {
   const likeButton = document.createElement("button");
   likeButton.classList.add("btn", "likeBtn");
   likeButton.setAttribute("type", "button");
