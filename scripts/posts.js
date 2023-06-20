@@ -14,9 +14,6 @@ window.addEventListener("load", function () {
   };
 });
 
-// window.addEventListener("scroll", handleScroll);
-
-
 function loginData() {
   let loginData = getLoginData();
   return loginData
