@@ -63,6 +63,8 @@ div.card-footer.bg-transparent {
     justify-content: center;
     padding: 0;
     border-top: 0;
+    background-color: rgb(0 0 0 / 5%)!important;
+    border-radius: inherit;
 }
 
 .postIcons {
@@ -81,6 +83,10 @@ div.card-footer.bg-transparent {
 
 .likeBtn:hover {
     transform: scale(1.1);
+    color: red;
+}
+
+.liked {
     color: red;
 }
 
