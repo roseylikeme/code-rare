@@ -19,34 +19,9 @@ function loginData() {
   return loginData
 }
 
-// Displays the posts + Grabs from the API
-function displayUserPost() {
-  let loginData = getLoginData();
-
-  document.getElementById("post").placeholder =
-    `Welcome @` + loginData.username + ", care to share?";
-  let postOutputList = document.getElementById("postOutputList");
-  postOutputList.innerHTML = "";
-
-  // Fetch 5 at a time + 5 per load
-  fetch(API_BASE_URL + `/api/posts?limit=5&offset=0}`, {
-    method: "GET",
-    headers: {
-      Authorization: `Bearer ${loginData.token}`,
-      "Content-type": "application/json; charset=UTF-8",
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      // How to Sort Data? -- Newest First
-      for (let i = data.length - 1; i >= 0; i--) {
-        displayCard(data[i]);
-      }
-    });
-}
-
 // When the airplane BTN is clicked POST to server
 function postBtnOnClick() {
+  let loginData = getLoginData()
   let inputElement = document.getElementById("post");
   let textToPost = inputElement.value;
   let data = { text: textToPost };
@@ -70,6 +45,46 @@ function postBtnOnClick() {
     }
   });
 }
+
+function displayUserPost() {
+  let loginData = getLoginData();
+
+  document.getElementById("post").placeholder =
+    `Welcome @` + loginData.username + ", care to share?";
+  let postOutputList = document.getElementById("postOutputList");
+  postOutputList.innerHTML = "";
+
+  // Fetch 5 at a time + 5 per load
+  fetch(API_BASE_URL + `/api/posts?limit=100&offset=0}`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${loginData.token}`,
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+      data.forEach((post) => {
+        displayCard(post);
+        console.log(post);
+
+        let likedByUser = post.likes.some((like) => like.username === loginData.username);
+        if (likedByUser) {
+          console.log("The user has liked this post.");
+          
+        } else {
+          console.log("The user has not liked this post.");
+        }
+      });
+
+      // Scroll to the top of the list after posts are displayed
+      postOutputList.scrollTop = 0;
+    });
+}
+
+
 
 function displayCard(data) {
   const cardContainer = createCardContainer();
@@ -107,10 +122,6 @@ function createLikeButton(likes, postId) {
   likeButton.setAttribute("type", "button");
   likeButton.setAttribute("value", postId);
   likeButton.style.width = "33.3%";
-
-  if (likes.includes(loginData().userId)) {
-    likeButton.classList.add("liked");
-  }
 
   likeButton.innerHTML = `
     <span>
@@ -207,7 +218,6 @@ function createDeleteButton() {
 
   return deleteButton;
 }
-
 
 // Date Converter
 function monthDayYear(date) {
