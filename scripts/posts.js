@@ -86,9 +86,8 @@ function displayCard(data) {
   let likedByUser = data.likes.some((like) => like.username === loginData.username);
   if (likedByUser) {
     likeButton.classList.add("liked");
-  } else {
-    // what to do if it is not liked by user?
   }
+
   const deleteButton = createDeleteButton();
 
   // Append elements
@@ -133,9 +132,14 @@ function createLikeButton(likes, postId) {
       },
       body: JSON.stringify(postIdValue),
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to like the post. You already likes this post!");
+        }
+        return response.json();
+      })
       .then((data) => {
-        console.log(data);
+        likeButton.classList.add("liked")
       })
       .catch((err) => {
         console.log(err);
