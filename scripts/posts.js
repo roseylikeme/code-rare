@@ -48,7 +48,7 @@ function displayUserPost() {
   let postOutputList = document.getElementById("postOutputList");
   postOutputList.innerHTML = "";
 
-  fetch(API_BASE_URL + `/api/posts?limit=100&offset=0}`, {
+  fetch(API_BASE_URL + `/api/posts?limit=500&offset=0}`, {
     method: "GET",
     headers: {
       Authorization: `Bearer ${loginData.token}`,
@@ -61,21 +61,10 @@ function displayUserPost() {
 
       data.forEach((post) => {
         displayCard(post);
-        console.log(post);
-
-        let likedByUser = post.likes.some((like) => like.username === loginData.username);
-        if (likedByUser) {
-          console.log("The user has liked this post.");
-          
-        } else {
-          console.log("The user has not liked this post.");
-        }
       });
 
     });
 }
-
-
 
 function displayCard(data) {
   const cardContainer = createCardContainer();
@@ -93,6 +82,13 @@ function displayCard(data) {
   btnGroup.style.width = "100%";
 
   const likeButton = createLikeButton(data.likes, data._id, btnGroup);
+
+  let likedByUser = data.likes.some((like) => like.username === loginData.username);
+  if (likedByUser) {
+    likeButton.classList.add("liked");
+  } else {
+    // what to do if it is not liked by user?
+  }
   const deleteButton = createDeleteButton();
 
   // Append elements
