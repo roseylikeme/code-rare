@@ -3,11 +3,12 @@
 "use strict";
 
 const API_BASE_URL = "https://microbloglite.herokuapp.com";
+const loginData = getLoginData();
 
 window.addEventListener("load", function () {
   displayUserPost();
   document.getElementById("post").placeholder =
-    `Welcome @` + loginData().username + ", care to share?";
+    `Welcome @` + loginData.username + ", care to share?";
   document.getElementById("postBtn").onclick = postBtnOnClick;
   const signoutBtn = document.getElementById("signoutBtn");
 
@@ -16,10 +17,6 @@ window.addEventListener("load", function () {
   };
 });
 
-function loginData() {
-  let loginData = getLoginData();
-  return loginData
-}
 
 // When the airplane BTN is clicked POST to server
 function postBtnOnClick() {
@@ -32,7 +29,7 @@ function postBtnOnClick() {
     body: JSON.stringify(data),
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${loginData().token}`,
+      Authorization: `Bearer ${loginData.token}`,
     },
   };
 
@@ -54,7 +51,7 @@ function displayUserPost() {
   fetch(API_BASE_URL + `/api/posts?limit=100&offset=0}`, {
     method: "GET",
     headers: {
-      Authorization: `Bearer ${loginData().token}`,
+      Authorization: `Bearer ${loginData.token}`,
       "Content-type": "application/json; charset=UTF-8",
     },
   })
@@ -66,7 +63,7 @@ function displayUserPost() {
         displayCard(post);
         console.log(post);
 
-        let likedByUser = post.likes.some((like) => like.username === loginData().username);
+        let likedByUser = post.likes.some((like) => like.username === loginData.username);
         if (likedByUser) {
           console.log("The user has liked this post.");
           
@@ -136,7 +133,7 @@ function createLikeButton(likes, postId) {
       method: "POST",
       headers: {
         "Content-type": "application/json",
-        Authorization: `Bearer ${loginData().token}`,
+        Authorization: `Bearer ${loginData.token}`,
       },
       body: JSON.stringify(postIdValue),
     })
