@@ -6,6 +6,8 @@ const API_BASE_URL = "https://microbloglite.herokuapp.com";
 
 window.addEventListener("load", function () {
   displayUserPost();
+  document.getElementById("post").placeholder =
+    `Welcome @` + loginData().username + ", care to share?";
   document.getElementById("postBtn").onclick = postBtnOnClick;
   const signoutBtn = document.getElementById("signoutBtn");
 
@@ -21,7 +23,6 @@ function loginData() {
 
 // When the airplane BTN is clicked POST to server
 function postBtnOnClick() {
-  let loginData = getLoginData()
   let inputElement = document.getElementById("post");
   let textToPost = inputElement.value;
   let data = { text: textToPost };
@@ -31,7 +32,7 @@ function postBtnOnClick() {
     body: JSON.stringify(data),
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${loginData.token}`,
+      Authorization: `Bearer ${loginData().token}`,
     },
   };
 
@@ -47,18 +48,13 @@ function postBtnOnClick() {
 }
 
 function displayUserPost() {
-  let loginData = getLoginData();
-
-  document.getElementById("post").placeholder =
-    `Welcome @` + loginData.username + ", care to share?";
   let postOutputList = document.getElementById("postOutputList");
   postOutputList.innerHTML = "";
 
-  // Fetch 5 at a time + 5 per load
   fetch(API_BASE_URL + `/api/posts?limit=100&offset=0}`, {
     method: "GET",
     headers: {
-      Authorization: `Bearer ${loginData.token}`,
+      Authorization: `Bearer ${loginData().token}`,
       "Content-type": "application/json; charset=UTF-8",
     },
   })
@@ -70,7 +66,7 @@ function displayUserPost() {
         displayCard(post);
         console.log(post);
 
-        let likedByUser = post.likes.some((like) => like.username === loginData.username);
+        let likedByUser = post.likes.some((like) => like.username === loginData().username);
         if (likedByUser) {
           console.log("The user has liked this post.");
           
@@ -79,8 +75,6 @@ function displayUserPost() {
         }
       });
 
-      // Scroll to the top of the list after posts are displayed
-      postOutputList.scrollTop = 0;
     });
 }
 
