@@ -64,7 +64,7 @@ function displayUserPost() {
   })
     .then((response) => response.json())
     .then((data) => {
-      data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+      data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
       data.forEach((post) => {
         displayCard(post);
