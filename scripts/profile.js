@@ -250,6 +250,7 @@ function createDeleteButton(data) {
 }
 
 function postBtnOnClick() {
+    let inputElement = document.getElementById("post");
     let textToPost = inputElement.value;
     let data = { text: textToPost };
 
