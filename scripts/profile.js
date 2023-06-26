@@ -1,8 +1,7 @@
 "use strict";
 
 // init vars here
-const loginData = getLoginData();
-const currentUser = loginData.username;
+const currentUser = getLoginData().username;
 const userFullName = document.getElementById("fullName");
 const userCreationDate = document.getElementById("createdAt");
 const signoutBtn = document.getElementById("signoutBtn");
@@ -30,7 +29,7 @@ function updateProfile(event) {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${loginData.token}`,
+            Authorization: `Bearer ${getLoginData().token}`,
         },
         body: JSON.stringify({
             bio: bioInput.value,
@@ -38,7 +37,7 @@ function updateProfile(event) {
         }),
     };
     fetch(
-        api + "api/users/" + loginData.username,
+        api + "api/users/" + getLoginData().username,
         options
     )
         .then((response) => response.json())
@@ -52,10 +51,10 @@ function updateProfile(event) {
 
 // Grab Full Name
 function moreInfo() {
-    fetch(api + `/api/users/${loginData.username}`, {
+    fetch(api + `/api/users/${getLoginData().username}`, {
         method: "GET",
         headers: {
-            Authorization: `Bearer ${loginData.token}`,
+            Authorization: `Bearer ${getLoginData().token}`,
             "Content-type": "application/json; charset=UTF-8",
         },
     })
@@ -75,7 +74,7 @@ function displayPost() {
         {
             method: "GET",
             headers: {
-                Authorization: `Bearer ${loginData.token}`,
+                Authorization: `Bearer ${getLoginData().token}`,
                 "Content-type": "application/json; charset=UTF-8",
             },
         }
@@ -104,7 +103,7 @@ function displayCard(data) {
 
   const likeButton = createLikeButton(data.likes, data._id, btnGroup);
 
-  let likedByUser = data.likes.some((like) => like.username === loginData.username);
+  let likedByUser = data.likes.some((like) => like.username === getLoginData().username);
   if (likedByUser) {
     likeButton.classList.add("liked");
   }
@@ -113,7 +112,7 @@ function displayCard(data) {
   btnGroup.appendChild(likeButton);
 
   // Create and add delete button only if the post is made by the current user
-  if (data.username === loginData.username) {
+  if (data.username === getLoginData().username) {
     const deleteButton = createDeleteButton(data._id);
     btnGroup.appendChild(deleteButton);
   }
@@ -152,7 +151,7 @@ function createLikeButton(likes, postId) {
       method: "POST",
       headers: {
         "Content-type": "application/json",
-        Authorization: `Bearer ${loginData.token}`,
+        Authorization: `Bearer ${getLoginData().token}`,
       },
       body: JSON.stringify(postIdValue),
     })
@@ -231,7 +230,7 @@ function createDeleteButton(data) {
       fetch(api + `/api/posts/${data}`, {
         method: "DELETE",
         headers: {
-          Authorization: `Bearer ${loginData.token}`,
+          Authorization: `Bearer ${getLoginData().token}`,
         },
       })
         .then((response) => response.json())
@@ -259,7 +258,7 @@ function postBtnOnClick() {
         body: JSON.stringify(data),
         headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${loginData.token}`,
+            Authorization: `Bearer ${getLoginData().token}`,
         },
     };
 

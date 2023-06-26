@@ -2,12 +2,10 @@
 
 "use strict";
 
-const loginData = getLoginData();
-
 window.addEventListener("load", function () {
   displayUserPost();
   document.getElementById("post").placeholder =
-    `Welcome @` + loginData.username + ", care to share?";
+    `Welcome @` + getLoginData().username + ", care to share?";
   document.getElementById("postBtn").onclick = postBtnOnClick;
   const signoutBtn = document.getElementById("signoutBtn");
 
@@ -28,7 +26,7 @@ function postBtnOnClick() {
     body: JSON.stringify(data),
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${loginData.token}`,
+      Authorization: `Bearer ${getLoginData().token}`,
     },
   };
 
@@ -50,7 +48,7 @@ function displayUserPost() {
   fetch(api + `/api/posts?limit=500&offset=0}`, {
     method: "GET",
     headers: {
-      Authorization: `Bearer ${loginData.token}`,
+      Authorization: `Bearer ${getLoginData().token}`,
       "Content-type": "application/json; charset=UTF-8",
     },
   })
@@ -82,7 +80,7 @@ function displayCard(data) {
 
   const likeButton = createLikeButton(data.likes, data._id, btnGroup);
 
-  let likedByUser = data.likes.some((like) => like.username === loginData.username);
+  let likedByUser = data.likes.some((like) => like.username === getLoginData().username);
   if (likedByUser) {
     likeButton.classList.add("liked");
   }
@@ -91,7 +89,7 @@ function displayCard(data) {
   btnGroup.appendChild(likeButton);
 
   // Create and add delete button only if the post is made by the current user
-  if (data.username === loginData.username) {
+  if (data.username === getLoginData().username) {
     const deleteButton = createDeleteButton(data._id);
     btnGroup.appendChild(deleteButton);
   }
@@ -131,7 +129,7 @@ function createLikeButton(likes, postId) {
       method: "POST",
       headers: {
         "Content-type": "application/json",
-        Authorization: `Bearer ${loginData.token}`,
+        Authorization: `Bearer ${getLoginData().token}`,
       },
       body: JSON.stringify(postIdValue),
     })
@@ -210,7 +208,7 @@ function createDeleteButton(data) {
       fetch(api + `/api/posts/${data}`, {
         method: "DELETE",
         headers: {
-          Authorization: `Bearer ${loginData.token}`,
+          Authorization: `Bearer ${getLoginData().token}`,
         },
       })
         .then((response) => response.json())
