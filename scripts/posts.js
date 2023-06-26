@@ -88,11 +88,14 @@ function displayCard(data) {
     likeButton.classList.add("liked");
   }
 
-  const deleteButton = createDeleteButton();
-
   // Append elements
   btnGroup.appendChild(likeButton);
-  btnGroup.appendChild(deleteButton);
+
+  // Create and add delete button only if the post is made by the current user
+  if (data.username === loginData.username) {
+    const deleteButton = createDeleteButton(data._id);
+    btnGroup.appendChild(deleteButton);
+  }
   cardFooter.appendChild(btnGroup);
   cardBody.appendChild(cardTitle);
   cardBody.appendChild(cardText);
@@ -101,6 +104,7 @@ function displayCard(data) {
   cardContainer.appendChild(card);
   document.getElementById("divForPost").appendChild(cardContainer);
 }
+
 
 function createLikeButton(likes, postId) {
   const likeButton = document.createElement("button");
@@ -187,7 +191,7 @@ function createCardText(text) {
   return cardText;
 }
 
-function createDeleteButton() {
+function createDeleteButton(data) {
   const deleteButton = document.createElement("button");
   deleteButton.classList.add("btn", "deleteBtn");
   deleteButton.setAttribute("type", "button");
@@ -202,10 +206,25 @@ function createDeleteButton() {
     </svg>
     </span> Delete`;
 
-  deleteButton.addEventListener("click", (event) => {
-    console.log("Delete button clicked");
-    // Add delete logic here
-  });
+    deleteButton.addEventListener("click", (e) => {
+      e.preventDefault();
+      fetch(API_BASE_URL + `/api/posts/${data}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${loginData.token}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(`Deleting your post in progress`)
+          setTimeout(function () {
+            location.reload();
+          }, 1000);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    })
 
   return deleteButton;
 }
