@@ -2,7 +2,6 @@
 
 "use strict";
 
-const API_BASE_URL = "https://microbloglite.herokuapp.com";
 const loginData = getLoginData();
 
 window.addEventListener("load", function () {
@@ -33,7 +32,7 @@ function postBtnOnClick() {
     },
   };
 
-  fetch(API_BASE_URL + "/api/posts", options).then((response) => {
+  fetch(api + "/api/posts", options).then((response) => {
     console.log(data);
     if (response.ok) {
       inputElement.value = "";
@@ -48,7 +47,7 @@ function displayUserPost() {
   let postOutputList = document.getElementById("postOutputList");
   postOutputList.innerHTML = "";
 
-  fetch(API_BASE_URL + `/api/posts?limit=500&offset=0}`, {
+  fetch(api + `/api/posts?limit=500&offset=0}`, {
     method: "GET",
     headers: {
       Authorization: `Bearer ${loginData.token}`,
@@ -128,7 +127,7 @@ function createLikeButton(likes, postId) {
       postId: postId,
     };
 
-    fetch(API_BASE_URL + "/api/likes", {
+    fetch(api + "/api/likes", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -208,7 +207,7 @@ function createDeleteButton(data) {
 
     deleteButton.addEventListener("click", (e) => {
       e.preventDefault();
-      fetch(API_BASE_URL + `/api/posts/${data}`, {
+      fetch(api + `/api/posts/${data}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${loginData.token}`,

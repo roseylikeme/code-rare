@@ -10,7 +10,6 @@ const bio = document.getElementById("bio");
 const fullNameInput = document.getElementById("fullNameInput");
 const bioInput = document.getElementById("bioInput");
 const saveEditsBtn = document.getElementById("editSaveBtn");
-const API_BASE_URL = "https://microbloglite.herokuapp.com";
 
 window.addEventListener("load", function () {
     displayPost();
@@ -39,7 +38,7 @@ function updateProfile(event) {
         }),
     };
     fetch(
-        API_BASE_URL + "api/users/" + loginData.username,
+        api + "api/users/" + loginData.username,
         options
     )
         .then((response) => response.json())
@@ -53,7 +52,7 @@ function updateProfile(event) {
 
 // Grab Full Name
 function moreInfo() {
-    fetch(API_BASE_URL + `/api/users/${loginData.username}`, {
+    fetch(api + `/api/users/${loginData.username}`, {
         method: "GET",
         headers: {
             Authorization: `Bearer ${loginData.token}`,
@@ -72,7 +71,7 @@ function moreInfo() {
 // Display Posts
 function displayPost() {
     fetch(
-        API_BASE_URL + `/api/posts?username=${currentUser}`,
+        api + `/api/posts?username=${currentUser}`,
         {
             method: "GET",
             headers: {
@@ -149,7 +148,7 @@ function createLikeButton(likes, postId) {
       postId: postId,
     };
 
-    fetch(API_BASE_URL + "/api/likes", {
+    fetch(api + "/api/likes", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -229,7 +228,7 @@ function createDeleteButton(data) {
 
     deleteButton.addEventListener("click", (e) => {
       e.preventDefault();
-      fetch(API_BASE_URL + `/api/posts/${data}`, {
+      fetch(api + `/api/posts/${data}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${loginData.token}`,
@@ -263,7 +262,7 @@ function postBtnOnClick() {
         },
     };
 
-    fetch(API_BASE_URL + "/api/posts", options).then(
+    fetch(api + "/api/posts", options).then(
         (response) => {
             console.log(data);
             if (response.ok) {
