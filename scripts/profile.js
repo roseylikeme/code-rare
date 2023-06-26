@@ -64,7 +64,7 @@ function moreInfo() {
         .then((data) => {
             console.log(data);
             userFullName.innerHTML = data.fullName;
-            userCreationDate.innerHTML = monthDayYear(data.createdAt);
+            userCreationDate.innerHTML = formatDateWithTime(data.createdAt);
             bio.innerHTML = data.bio;
         });
 }
@@ -200,7 +200,7 @@ function createCardTitle(username, createdAt) {
   cardTitle.innerText = `@${username}`;
   const cardSubtitle = document.createElement("h6");
   cardSubtitle.classList.add("card-subtitle", "mb-2", "text-muted");
-  cardSubtitle.innerText = `${monthDayYear(createdAt)}`;
+  cardSubtitle.innerText = `${formatDateWithTime(createdAt)}`;
   cardTitle.appendChild(cardSubtitle);
   return cardTitle;
 }
@@ -274,40 +274,4 @@ function postBtnOnClick() {
             }
         }
     );
-}
-
-function monthDayYear(date) {
-    let givenDate = new Date(date);
-    const months = [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December",
-    ];
-
-    let day = givenDate.getDate();
-    let month = months[givenDate.getMonth()];
-    let year = givenDate.getFullYear();
-    let hours = givenDate.getHours();
-    let minutes = givenDate.getMinutes();
-
-    if (hours <= 12) {
-        let monthDayYear = `${month} ${day}, ${year} at ${hours}:${minutes
-            .toString(10)
-            .padStart(2, "0")} AM`;
-        return monthDayYear;
-    } else {
-        let monthDayYear = `${month} ${day}, ${year} at ${hours - 12}:${minutes
-            .toString(10)
-            .padStart(2, "0")} PM`;
-        return monthDayYear;
-    }
 }
