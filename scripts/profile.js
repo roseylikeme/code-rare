@@ -42,7 +42,6 @@ function updateProfile(event) {
     )
         .then((response) => response.json())
         .then((data) => {
-            console.log(data);
             setTimeout(function () {
                 location.reload();
             }, 1000); // Refreshes the page.
@@ -60,7 +59,6 @@ function moreInfo() {
     })
         .then((response) => response.json())
         .then((data) => {
-            console.log(data);
             userFullName.innerHTML = data.fullName;
             userCreationDate.innerHTML = formatDateWithTime(data.createdAt);
             bio.innerHTML = data.bio;
