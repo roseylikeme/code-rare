@@ -2,13 +2,10 @@
 
 "use strict";
 
-const API_BASE_URL = "https://microbloglite.herokuapp.com";
-const loginData = getLoginData();
-
 window.addEventListener("load", function () {
   displayUserPost();
   document.getElementById("post").placeholder =
-    `Welcome @` + loginData.username + ", care to share?";
+    `Welcome @` + getLoginData().username + ", care to share?";
   document.getElementById("postBtn").onclick = postBtnOnClick;
   const signoutBtn = document.getElementById("signoutBtn");
 
@@ -29,11 +26,11 @@ function postBtnOnClick() {
     body: JSON.stringify(data),
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${loginData.token}`,
+      Authorization: `Bearer ${getLoginData().token}`,
     },
   };
 
-  fetch(API_BASE_URL + "/api/posts", options).then((response) => {
+  fetch(api + "/api/posts", options).then((response) => {
     console.log(data);
     if (response.ok) {
       inputElement.value = "";
@@ -48,10 +45,10 @@ function displayUserPost() {
   let postOutputList = document.getElementById("postOutputList");
   postOutputList.innerHTML = "";
 
-  fetch(API_BASE_URL + `/api/posts?limit=500&offset=0}`, {
+  fetch(api + `/api/posts?limit=500&offset=0}`, {
     method: "GET",
     headers: {
-      Authorization: `Bearer ${loginData.token}`,
+      Authorization: `Bearer ${getLoginData().token}`,
       "Content-type": "application/json; charset=UTF-8",
     },
   })
@@ -83,7 +80,7 @@ function displayCard(data) {
 
   const likeButton = createLikeButton(data.likes, data._id, btnGroup);
 
-  let likedByUser = data.likes.some((like) => like.username === loginData.username);
+  let likedByUser = data.likes.some((like) => like.username === getLoginData().username);
   if (likedByUser) {
     likeButton.classList.add("liked");
   }
@@ -92,7 +89,7 @@ function displayCard(data) {
   btnGroup.appendChild(likeButton);
 
   // Create and add delete button only if the post is made by the current user
-  if (data.username === loginData.username) {
+  if (data.username === getLoginData().username) {
     const deleteButton = createDeleteButton(data._id);
     btnGroup.appendChild(deleteButton);
   }
@@ -128,11 +125,11 @@ function createLikeButton(likes, postId) {
       postId: postId,
     };
 
-    fetch(API_BASE_URL + "/api/likes", {
+    fetch(api + "/api/likes", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
-        Authorization: `Bearer ${loginData.token}`,
+        Authorization: `Bearer ${getLoginData().token}`,
       },
       body: JSON.stringify(postIdValue),
     })
@@ -179,7 +176,7 @@ function createCardTitle(username, createdAt) {
   cardTitle.innerText = `@${username}`;
   const cardSubtitle = document.createElement("h6");
   cardSubtitle.classList.add("card-subtitle", "mb-2", "text-muted");
-  cardSubtitle.innerText = `${monthDayYear(createdAt)}`;
+  cardSubtitle.innerText = `${formatDateWithTime(createdAt)}`;
   cardTitle.appendChild(cardSubtitle);
   return cardTitle;
 }
@@ -208,10 +205,10 @@ function createDeleteButton(data) {
 
     deleteButton.addEventListener("click", (e) => {
       e.preventDefault();
-      fetch(API_BASE_URL + `/api/posts/${data}`, {
+      fetch(api + `/api/posts/${data}`, {
         method: "DELETE",
         headers: {
-          Authorization: `Bearer ${loginData.token}`,
+          Authorization: `Bearer ${getLoginData().token}`,
         },
       })
         .then((response) => response.json())
@@ -229,39 +226,3 @@ function createDeleteButton(data) {
   return deleteButton;
 }
 
-// Date Converter
-function monthDayYear(date) {
-  let givenDate = new Date(date);
-  const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-
-  let day = givenDate.getDate();
-  let month = months[givenDate.getMonth()];
-  let year = givenDate.getFullYear();
-  let hours = givenDate.getHours();
-  let minutes = givenDate.getMinutes();
-
-  if (hours <= 12) {
-    let monthDayYear = `${month} ${day}, ${year} at ${hours}:${minutes
-      .toString(10)
-      .padStart(2, "0")} AM`;
-    return monthDayYear;
-  } else {
-    let monthDayYear = `${month} ${day}, ${year} at ${hours - 12}:${minutes
-      .toString(10)
-      .padStart(2, "0")} PM`;
-    return monthDayYear;
-  }
-}
