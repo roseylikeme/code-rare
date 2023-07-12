@@ -14,6 +14,19 @@ window.addEventListener("load", function () {
   };
 });
 
+function convertImageLink(post) {
+  const imageRegex = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/gi;
+  const imageLink = post.match(imageRegex);
+
+  if (imageLink) {
+    const imageTag = `<img src="${imageLink[0]}" class="card-img" alt="Linked Image" />`;
+    const convertedPost = post.replace(imageRegex, imageTag);
+    return convertedPost;
+  }
+
+  return post;
+}
+
 
 // When the airplane BTN is clicked POST to server
 function postBtnOnClick() {
@@ -68,7 +81,15 @@ function displayCard(data) {
   const card = createCard();
   const cardBody = createCardBody();
   const cardTitle = createCardTitle(data.username, data.createdAt);
-  const cardText = createCardText(data.text);
+
+  const convertedText = convertImageLink(data.text);
+  const tempElement = document.createElement("div");
+  tempElement.innerHTML = convertedText;
+  const cardText = document.createDocumentFragment();
+  while (tempElement.firstChild) {
+    cardText.appendChild(tempElement.firstChild);
+  }
+
   const cardFooter = document.createElement("div");
   cardFooter.classList.add("card-footer", "bg-transparent");
 
@@ -93,14 +114,16 @@ function displayCard(data) {
     const deleteButton = createDeleteButton(data._id);
     btnGroup.appendChild(deleteButton);
   }
-  cardFooter.appendChild(btnGroup);
+
   cardBody.appendChild(cardTitle);
   cardBody.appendChild(cardText);
   card.appendChild(cardBody);
+  cardFooter.appendChild(btnGroup);
   card.appendChild(cardFooter);
   cardContainer.appendChild(card);
   document.getElementById("divForPost").appendChild(cardContainer);
 }
+
 
 
 function createLikeButton(likes, postId) {
