@@ -204,7 +204,6 @@ function postBtnOnClick() {
     };
   
     fetch(api + "/api/posts", options).then((response) => {
-      console.log(data);
       if (response.ok) {
         inputElement.value = "";
         setTimeout(function () {
