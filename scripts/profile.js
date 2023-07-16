@@ -37,7 +37,7 @@ function updateProfile(event) {
         }),
     };
     fetch(
-        api + "api/users/" + getLoginData().username,
+        api + "/api/users/" + getLoginData().username,
         options
     )
         .then((response) => response.json())
