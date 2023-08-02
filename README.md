@@ -2,7 +2,7 @@
 
 The Rose Project presents a Social Media app using HTML, CSS, and JavaScript.
 
-Check it out: https://roseylikeme.github.io/stay-organized
+Check it out: https://roseylikeme.github.io/code-rare/
 
 ## Description + Goal
 
