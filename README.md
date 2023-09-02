@@ -6,7 +6,7 @@ Check it out: https://roseylikeme.github.io/code-rare/
 
 ## Description + Goal
 
-The Rose Project presents to you Code:RARE. With this particular project, my goal is to showcase my understanding of CRUD (create, read, update, and delete) operations through a social media website. This website is powered by the Microbloglite API (https://microbloglite.herokuapp.com/docs/).
+The Rose Project presents to you Code:RARE. With this particular project, my goal is to showcase my understanding of CRUD (create, read, update, and delete) operations through a social media website. This website is powered by the Code Rare Servers API -> https://code-rare-servers-923a148ef3c1.herokuapp.com/.
 
 This website has four simple pages:
 - Login page
