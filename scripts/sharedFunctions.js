@@ -196,7 +196,7 @@ function createDeleteButton(data) {
 }
 
 // When the airplane BTN is clicked POST to server
-function postBtnOnClick() {
+function createPost() {
     let inputElement = document.getElementById("post");
     let textToPost = inputElement.value;
     let data = { text: textToPost };
