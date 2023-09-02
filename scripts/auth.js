@@ -2,7 +2,7 @@
 
 "use strict";
 
-const api = "https://microbloglite.herokuapp.com";
+const api = 'https://code-rare-servers-923a148ef3c1.herokuapp.com/';
 
 
 // You can use this to get the login data of the logged-in user (if any). 

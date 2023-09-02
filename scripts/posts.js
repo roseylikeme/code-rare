@@ -6,7 +6,7 @@ window.addEventListener("load", function () {
   displayUserPost();
   document.getElementById("post").placeholder =
     `Welcome @` + getLoginData().username + ", care to share?";
-  document.getElementById("postBtn").onclick = postBtnOnClick;
+  document.getElementById("postBtn").onclick = createPost;
   const signoutBtn = document.getElementById("signoutBtn");
 
   signoutBtn.onclick = function () {

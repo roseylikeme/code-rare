@@ -168,22 +168,29 @@ function createDeleteButton(data) {
       deleteButton.addEventListener("click", (e) => {
         e.preventDefault();
         fetch(api + `/api/posts/${data}`, {
-          method: "DELETE",
-          headers: {
-            Authorization: `Bearer ${getLoginData().token}`,
-          },
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${getLoginData().token}`,
+            },
         })
-          .then((response) => response.json())
-          .then((data) => {
-            console.log(`Deleting your post in progress`)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`Failed to delete post. Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then((data) => {
+            console.log(`Deleting your post in progress`);
             setTimeout(function () {
-              location.reload();
+                location.reload();
             }, 1000);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      })
+        })
+        .catch((err) => {
+            console.error(err);
+            // Handle the error here, you can display an error message to the user or take other actions as needed.
+        });
+    });
+    
   
     return deleteButton;
 }
