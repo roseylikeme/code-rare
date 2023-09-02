@@ -17,7 +17,7 @@ window.addEventListener("load", function () {
         logout();
     };
     saveEditsBtn.onclick = updateProfile;
-    document.getElementById("postBtn").onclick = postBtnOnClick;
+    document.getElementById("postBtn").onclick = createPost;
     document.getElementById("name").innerText = "@" + currentUser;
 });
 
