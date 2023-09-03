@@ -25,12 +25,12 @@ window.addEventListener('load', function () {
         "password": pw
       });
 
-      var requestOptions = {
+      var options = {
         method: 'POST',
         headers: myHeaders,
         body: raw,
       };
-      fetch("https://microbloglite.herokuapp.com/api/users", requestOptions)
+      fetch(api + "/api/users", options)
       .then(response => {
           if(!response.ok) {
               throw new Error(`HTTP error! status: ${response.status}`);
