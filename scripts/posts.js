@@ -3,7 +3,7 @@
 "use strict";
 
 window.addEventListener("load", function () {
-  displayUserPost();
+  displayPost();
   document.getElementById("post").placeholder =
     `Welcome @` + getLoginData().username + ", care to share?";
   document.getElementById("postBtn").onclick = createPost;
@@ -14,7 +14,8 @@ window.addEventListener("load", function () {
   };
 });
 
-function displayUserPost() {
+function displayPost() {
+  clearPostsContainer();
   let postOutputList = document.getElementById("postOutputList");
   postOutputList.innerHTML = "";
 
