@@ -22,7 +22,7 @@ window.addEventListener("load", function () {
 });
 
 // Update Profile when Edit Profile Saved
-function updateProfile(event) {
+async function updateProfile(event) {
     event.preventDefault();
 
     const options = {
@@ -36,21 +36,19 @@ function updateProfile(event) {
             fullName: fullNameInput.value,
         }),
     };
-    fetch(
+    await fetch(
         api + "/api/users/" + getLoginData().username,
         options
     )
         .then((response) => response.json())
         .then((data) => {
-            setTimeout(function () {
-                location.reload();
-            }, 1000); // Refreshes the page.
+            bio.innerHTML = data.bio;
         });
 }
 
 // Grab Full Name
-function moreInfo() {
-    fetch(api + `/api/users/${getLoginData().username}`, {
+async function moreInfo() {
+    await fetch(api + `/api/users/${getLoginData().username}`, {
         method: "GET",
         headers: {
             Authorization: `Bearer ${getLoginData().token}`,
@@ -66,8 +64,8 @@ function moreInfo() {
 }
 
 // Display Posts
-function displayPost() {
-    fetch(
+async function displayPost() {
+   await fetch(
         api + `/api/posts?username=${currentUser}`,
         {
             method: "GET",
