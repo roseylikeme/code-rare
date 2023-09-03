@@ -195,8 +195,15 @@ function createDeleteButton(data) {
     return deleteButton;
 }
 
+function clearPostsContainer() {
+  const postsContainer = document.getElementById("divForPost");
+  while (postsContainer.firstChild) {
+      postsContainer.removeChild(postsContainer.firstChild);
+  }
+}
+
 // When the airplane BTN is clicked POST to server
-function createPost() {
+async function createPost() {
     let inputElement = document.getElementById("post");
     let textToPost = inputElement.value;
     let data = { text: textToPost };
@@ -210,12 +217,10 @@ function createPost() {
       },
     };
   
-    fetch(api + "/api/posts", options).then((response) => {
+    await fetch(api + "/api/posts", options).then((response) => {
       if (response.ok) {
         inputElement.value = "";
-        setTimeout(function () {
-          location.reload();
-        }, 1000);
+        displayPost()
       }
     });
   }

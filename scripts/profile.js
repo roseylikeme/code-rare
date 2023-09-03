@@ -65,6 +65,7 @@ async function moreInfo() {
 
 // Display Posts
 async function displayPost() {
+  clearPostsContainer()
    await fetch(
         api + `/api/posts?username=${currentUser}`,
         {
