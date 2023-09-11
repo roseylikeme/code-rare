@@ -148,19 +148,19 @@ textarea {
 }
 
 @media only screen and (max-width: 767px) {
-    nav {
+    /* nav {
         height: 10vh;
         margin-left: 15px;
-    }
-    .bg-dark {
+    } */
+    /* .bg-dark {
         background-color: #6793b5!important;
-    }
+    } */
     #toggleBtn {
         background-color: #212529;
     }
-    #backToTopBtn {
+    /* #backToTopBtn {
         display: block;
-    }
+    } */
 
     .centerContainer {
         flex: 0 0 auto;
