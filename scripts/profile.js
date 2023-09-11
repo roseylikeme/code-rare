@@ -33,7 +33,6 @@ async function updateProfile(event) {
         },
         body: JSON.stringify({
             bio: bioInput.value,
-            fullName: fullNameInput.value,
         }),
     };
     await fetch(
