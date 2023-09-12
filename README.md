@@ -50,7 +50,7 @@ At the profile page, you will see only posts created by the current user. Anothe
 - [x] Implement liking feature
 - [ ] Show the users who liked a post
 - [ ] Search for other users' profile page ( get a list of posts by other users )
-- [ ] BUG: Fix the bio update feature not working!
+- [x] BUG: Fix the bio update feature not working!
 - [ ] Create a settings page that allows user to change password
 
 ## More Info
