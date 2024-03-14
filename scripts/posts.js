@@ -26,13 +26,27 @@ function displayPost() {
       "Content-type": "application/json; charset=UTF-8",
     },
   })
-    .then((response) => response.json())
-    .then((data) => {
-      data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  .then((response) => {
+    if (!response.ok) {
+      if (response.status === 401) {
+        // Call your logout function here
+        logout();
+        // Redirect to login page
+        window.location.href = 'index.html';
+      } else {
+        throw new Error('Failed to fetch posts');
+      }
+    }
+    return response.json();
+  })
+  .then((data) => {
+    data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
-      data.forEach((post) => {
-        displayCard(post);
-      });
-
+    data.forEach((post) => {
+      displayCard(post);
     });
+  })
+  .catch((error) => {
+    console.error('There has been a problem with your fetching posts', error);
+  });
 }
